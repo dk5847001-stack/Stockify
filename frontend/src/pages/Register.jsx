@@ -21,7 +21,7 @@ const Register = () => {
     setError("");
 
     try {
-      await register({ ...form, role: "admin" });
+      await register(form);
       navigate("/dashboard", { replace: true });
     } catch (apiError) {
       setError(apiError.response?.data?.message || "Unable to create account. Please try again.");
@@ -34,10 +34,10 @@ const Register = () => {
     <main className="auth-page">
       <section className="auth-visual">
         <div className="brand-mark">S</div>
-        <h2>Set up a polished retail workspace in minutes.</h2>
+        <h2>Join your retail workspace in minutes.</h2>
         <div className="auth-metrics">
           <div><strong>JWT</strong><span>Secure access</span></div>
-          <div><strong>Admin</strong><span>Full control</span></div>
+          <div><strong>User</strong><span>Staff access</span></div>
         </div>
       </section>
       <section className="auth-card">
@@ -46,7 +46,7 @@ const Register = () => {
         {error ? <div className="alert alert-danger py-2">{error}</div> : null}
         <form className="auth-form" onSubmit={handleSubmit}>
           <label>
-            Store Owner Name
+            Full Name
             <div className="input-shell">
               <UserRound size={18} />
               <input
