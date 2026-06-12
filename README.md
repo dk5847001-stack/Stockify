@@ -206,7 +206,7 @@ Deployment order:
 3. Set frontend `VITE_API_URL` to `<backend-url>/api`.
 4. Deploy frontend.
 5. Set backend `CLIENT_URL` and `CLIENT_URLS` to include frontend URL.
-6. Run `npm run seed:admin` locally with production `MONGO_URI`, or use a one-off Render shell/job.
+6. Set `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and `ADMIN_PHONE` on the backend service. The backend creates the admin automatically when it starts, so a paid Render shell or one-off job is not required.
 
 ## Production Notes
 

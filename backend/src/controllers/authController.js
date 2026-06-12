@@ -39,7 +39,7 @@ const validatePassword = (password) => {
 };
 
 export const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, role, phone, avatar } = req.body;
+  const { name, email, password, phone, avatar } = req.body;
 
   validateRequired({ name, email, password });
 
@@ -48,10 +48,6 @@ export const registerUser = asyncHandler(async (req, res) => {
   }
 
   validatePassword(password);
-
-  if (role && !["user", "admin"].includes(role)) {
-    throw createError("Role must be either user or admin.");
-  }
 
   const existingUser = await User.findOne({ email: email.toLowerCase() });
 
@@ -63,7 +59,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
-    role,
+    role: "user",
     phone,
     avatar
   });
